@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VectorLibrary
 {
@@ -56,6 +53,18 @@ namespace VectorLibrary
             {
                 elements.Add(var);
             }
+        }
+        public Vector(byte[] array, int stride)
+        {
+            elements = new List<double>();
+            for (int i = 0; i < array.Length; i+=stride)
+            {
+                if (array[i] < 128 && array[i + 1] < 128 && array[i + 2] < 128)
+                    elements.Add(1);
+                else
+                    elements.Add(-1);
+            }
+            
         }
         public override string ToString()
         {
